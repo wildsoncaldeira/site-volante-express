@@ -140,7 +140,7 @@ renderGaleria();
     {n:'Oliveira',              r:'Centro-Oeste',c:'#93c5fd',rb:'#eff6ff',rt:'#1e40af',la:-20.6964,lo:-44.8269},
     {n:'Itapecerica',           r:'Centro-Oeste',c:'#93c5fd',rb:'#eff6ff',rt:'#1e40af',la:-20.4731,lo:-45.1256},
     {n:'Carmo da Mata',         r:'Centro-Oeste',c:'#93c5fd',rb:'#eff6ff',rt:'#1e40af',la:-20.5564,lo:-44.8711},
-    {n:'Conselheiro Lafaiete',  r:'Grande BH',   c:'#e8c430',rb:'#fef9c3',rt:'#713f12',la:-20.6606,lo:-43.7853}
+    {n:'Conselheiro Lafaiete',  r:'Grande BH',   c:'#e8c430',rb:'#fefce8',rt:'#92400e',la:-20.6606,lo:-43.7853}
   ];
 
   function mkI(cor,sz,hl){
