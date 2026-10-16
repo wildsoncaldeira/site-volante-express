@@ -18,8 +18,8 @@ Sem orçamento escondido ou cobranças surpresa:
 
 | Categoria do Veículo | À vista (PIX / Dinheiro) | Cartão de Crédito |
 | :--- | :--- | :--- |
-| **Carros Pequenos, SUVs, Pickups e Vans** | **R$ 139,00** | R$ 150,00 (até 2x) |
-| **Ônibus, Caminhões e Microônibus** | **R$ 170,00** | R$ 180,00 (até 2x) |
+| **Carros Pequenos, SUVs, Pickups e Vans** | **R$ 149,00** | R$ 160,00 (até 2x) |
+| **Ônibus, Caminhões e Microônibus** | **R$ 180,00** | R$ 190,00 (até 2x) |
 
 ---
 
@@ -32,7 +32,7 @@ Sem orçamento escondido ou cobranças surpresa:
 
 ## 📲 Como Agendar seu Horário
 1. **Chame no WhatsApp**: Fale com a equipe informando modelo do carro e cidade desejada.
-2. **Ponto de Apoio**: Compareça ao ponto credenciado da sua cidade no horário reservado, sem pegar filas.
+2. **Ponto de Apoio**: Compareça ao ponto credenciado da sua cidade (estacionamento de supermercado, estacionamento público ou parceiro local) no horário reservado, sem pegar filas.
 3. **Serviço em 45 min**: O Volanteiro realiza o acabamento na hora. Você paga e sai dirigindo com volante novo.
 
 - **WhatsApp Oficial**: [+55 (31) 99629-4103](https://wa.me/5531996294103?text=Ol%C3%A1%21%20Quero%20agendar%20meu%20hor%C3%A1rio.)
