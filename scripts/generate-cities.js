@@ -21,12 +21,11 @@ const cidades = JSON.parse(fs.readFileSync(cidadesPath, 'utf8'));
 const totalCidades = cidades.length;
 const outrasCidadesCount = totalCidades - 1;
 
-// Agrupamento por região
+// Agrupamento por região (3 regiões oficiais)
 const regioes = {
   'Grande BH': cidades.filter(c => c.regiao === 'Grande BH'),
   'Central e Vetor Norte': cidades.filter(c => c.regiao === 'Central e Vetor Norte'),
-  'Centro-Oeste': cidades.filter(c => c.regiao === 'Centro-Oeste'),
-  'Alto Paraopeba': cidades.filter(c => c.regiao === 'Alto Paraopeba')
+  'Centro-Oeste': cidades.filter(c => c.regiao === 'Centro-Oeste')
 };
 
 function getFileLastmod(filePath) {
@@ -155,7 +154,13 @@ function generateCityHtml(cidade, index) {
     </div>`;
   }
 
-  // Footer - links das 28 cidades
+  // Outras cidades da mesma regional para a lateral do mapa
+  const cidadesDaMesmaRegiao = (regioes[cidade.regiao] || []).filter(c => c.slug !== cidade.slug);
+  const corRegiao = cidade.regiao === 'Grande BH' ? '#e8c430' : (cidade.regiao === 'Central e Vetor Norte' ? '#60a5fa' : '#93c5fd');
+  const outrasCidadesRegiaoHtml = cidadesDaMesmaRegiao.map(c => `
+            <a href="/revestimento-de-volante-${c.slug}" class="cidade-tag" data-cidade="${c.nome}" data-cor="${corRegiao}" data-text="#0a1628" title="Ver atendimento em ${c.nome}">${c.nome}</a>`).join('');
+
+  // Footer - links das 28 cidades em 3 regiões
   const footerCidadesHtml = `
     <div class="footer-cidades-block">
       <h3>Atendimento Volante Express em ${totalCidades} Cidades de Minas Gerais</h3>
@@ -176,12 +181,6 @@ function generateCityHtml(cidade, index) {
           <h4>Centro-Oeste</h4>
           <ul>
             ${regioes['Centro-Oeste'].map(c => `<li><a href="/revestimento-de-volante-${c.slug}">${c.nome}</a></li>`).join('')}
-          </ul>
-        </div>
-        <div class="footer-regiao-col">
-          <h4>Alto Paraopeba</h4>
-          <ul>
-            ${regioes['Alto Paraopeba'].map(c => `<li><a href="/revestimento-de-volante-${c.slug}">${c.nome}</a></li>`).join('')}
           </ul>
         </div>
       </div>
@@ -301,12 +300,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <style>
 /* Estilos críticos inline para garantir renderização perfeita mesmo com cache */
 nav { position: fixed; top: 0; left: 0; right: 0; height: 64px; background: rgba(10, 22, 40, 0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; }
-.breadcrumb-bar { margin-top: 64px; background: #0a1326; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding: 12px 5%; font-size: 0.85rem; width: 100%; position: relative; z-index: 10; }
-.breadcrumb-bar .section-inner { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 auto; max-width: 1200px; }
-.breadcrumb-bar a { color: #e8c430; text-decoration: none; font-weight: 600; }
-.breadcrumb-bar a:hover { text-decoration: underline; }
-.breadcrumb-bar .breadcrumb-sep { color: rgba(255, 255, 255, 0.4); }
-.breadcrumb-bar .breadcrumb-current { color: rgba(255, 255, 255, 0.85); font-weight: 500; }
 
 .hero-slider { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); border: 2px solid rgba(232, 196, 48, 0.3); max-width: 440px; margin: 0 auto; width: 100%; }
 .slider-track { display: flex; transition: transform 0.4s ease-in-out; width: 100%; }
@@ -322,6 +315,17 @@ nav { position: fixed; top: 0; left: 0; right: 0; height: 64px; background: rgba
 .ponto-icon { font-size: 1.6rem; line-height: 1; flex-shrink: 0; }
 .ponto-info-item strong { color: #ffffff !important; font-size: 0.95rem; display: block; margin-bottom: 4px; }
 .ponto-info-item p { color: rgba(255, 255, 255, 0.85) !important; font-size: 0.9rem; line-height: 1.5; margin: 0; }
+.ponto-apoio-action { text-align: center; margin-top: 12px; }
+.ponto-apoio-action .btn-primary { margin: 0 auto; }
+
+/* SEÇÃO DE PREÇOS COM QUEBRA VISUAL */
+.precos-bg { background: #f1f5f9; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+.precos-bg .preco-card { background: #ffffff; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08); }
+
+/* OUTRAS CIDADES DA REGIONAL NO MAPA */
+.regiao-outras-cidades { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.regiao-outras-cidades a { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 16px; padding: 5px 12px; color: #fff !important; text-decoration: none; font-size: 0.8rem; font-weight: 600; display: inline-flex; align-items: center; }
+.regiao-outras-cidades a:hover { background: #e8c430; color: #0a1628 !important; border-color: #e8c430; }
 
 .vizinhas-secao { background: #0b1329; padding: 70px 5%; }
 .vizinhas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 36px; }
@@ -348,20 +352,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="nav-logo">
     <a href="/" style="display:flex;align-items:center;text-decoration:none;">
       <img src="/images/logo-volante-express.png" alt="Volante Express"
-        style="height:44px;width:auto;display:block;mix-blend-mode:screen;filter:brightness(1.1)">
+        style="height:44px;width:auto;display:block;">
     </a>
   </div>
   <a href="${ctaWaUrl}" class="nav-cta" target="_blank">Consultar Próxima Data</a>
 </nav>
-
-<!-- BREADCRUMB VISÍVEL -->
-<div class="breadcrumb-bar" aria-label="Navegação estrutural">
-  <div class="section-inner">
-    <a href="/">Início</a>
-    <span class="breadcrumb-sep">&gt;</span>
-    <span class="breadcrumb-current">Revestimento de Volante em ${cidade.nome}</span>
-  </div>
-</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -620,7 +615,7 @@ ${optionalHtml}
 </section>
 
 <!-- PREÇOS -->
-<section>
+<section class="precos-bg" id="precos">
   <div class="section-inner" style="text-align:center">
     <span class="section-tag">Preços e garantia em ${cidade.nome}</span>
     <h2 class="section-title">Preço justo, transparente<br>e sem surpresa</h2>
@@ -706,11 +701,16 @@ ${vizinhasHtml ? `
 
         <div class="regiao-card">
           <div class="regiao-header-l">
-            <div class="regiao-dot-l" style="background:#93c5fd"></div>
+            <div class="regiao-dot-l" style="background:${corRegiao}"></div>
             <span class="regiao-nome-l">Região: ${cidade.regiao}</span>
-            <span class="regiao-count-l">${cidade.frequencia}</span>
+            <span class="regiao-count-l">${regioes[cidade.regiao].length} cidades</span>
           </div>
-          <p style="color:rgba(255,255,255,0.75);font-size:0.82rem;line-height:1.4;">Atendemos também outras cidades vizinhas através da nossa rede itinerante de instaladores especializados.</p>
+          <p style="color:rgba(255,255,255,0.85);font-size:0.84rem;line-height:1.4;margin-bottom:10px;">
+            Outras cidades com atendimento na regional <strong>${cidade.regiao}</strong>:
+          </p>
+          <div class="regiao-outras-cidades">
+            ${outrasCidadesRegiaoHtml}
+          </div>
         </div>
       </div>
       <div class="mapa-sticky" id="mapa-section">
@@ -719,7 +719,6 @@ ${vizinhasHtml ? `
           <div class="mapa-leg-item"><div class="mapa-leg-dot" style="background:var(--accent)"></div> Grande BH</div>
           <div class="mapa-leg-item"><div class="mapa-leg-dot" style="background:var(--blue-400)"></div> Central e Vetor Norte</div>
           <div class="mapa-leg-item"><div class="mapa-leg-dot" style="background:#93c5fd"></div> Centro-Oeste</div>
-          <div class="mapa-leg-item"><div class="mapa-leg-dot" style="background:#f97316"></div> Alto Paraopeba</div>
         </div>
       </div>
     </div>
@@ -946,8 +945,7 @@ function updateIndexMd() {
   const regioesTexto = [
     `- **Grande Belo Horizonte (${regioes['Grande BH'].length} cidades)**: ${regioes['Grande BH'].map(c => `[${c.nome}](https://volanteexpress.com.br/revestimento-de-volante-${c.slug})`).join(', ')}.`,
     `- **Central e Vetor Norte (${regioes['Central e Vetor Norte'].length} cidades)**: ${regioes['Central e Vetor Norte'].map(c => `[${c.nome}](https://volanteexpress.com.br/revestimento-de-volante-${c.slug})`).join(', ')}.`,
-    `- **Centro-Oeste (${regioes['Centro-Oeste'].length} cidades)**: ${regioes['Centro-Oeste'].map(c => `[${c.nome}](https://volanteexpress.com.br/revestimento-de-volante-${c.slug})`).join(', ')}.`,
-    `- **Alto Paraopeba (${regioes['Alto Paraopeba'].length} cidade)**: ${regioes['Alto Paraopeba'].map(c => `[${c.nome}](https://volanteexpress.com.br/revestimento-de-volante-${c.slug})`).join(', ')}.`
+    `- **Centro-Oeste (${regioes['Centro-Oeste'].length} cidades)**: ${regioes['Centro-Oeste'].map(c => `[${c.nome}](https://volanteexpress.com.br/revestimento-de-volante-${c.slug})`).join(', ')}.`
   ].join('\n');
 
   const coverageHeader = '## 📍 Cobertura Regional';

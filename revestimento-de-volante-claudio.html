@@ -112,12 +112,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <style>
 /* Estilos críticos inline para garantir renderização perfeita mesmo com cache */
 nav { position: fixed; top: 0; left: 0; right: 0; height: 64px; background: rgba(10, 22, 40, 0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; }
-.breadcrumb-bar { margin-top: 64px; background: #0a1326; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding: 12px 5%; font-size: 0.85rem; width: 100%; position: relative; z-index: 10; }
-.breadcrumb-bar .section-inner { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 auto; max-width: 1200px; }
-.breadcrumb-bar a { color: #e8c430; text-decoration: none; font-weight: 600; }
-.breadcrumb-bar a:hover { text-decoration: underline; }
-.breadcrumb-bar .breadcrumb-sep { color: rgba(255, 255, 255, 0.4); }
-.breadcrumb-bar .breadcrumb-current { color: rgba(255, 255, 255, 0.85); font-weight: 500; }
 
 .hero-slider { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); border: 2px solid rgba(232, 196, 48, 0.3); max-width: 440px; margin: 0 auto; width: 100%; }
 .slider-track { display: flex; transition: transform 0.4s ease-in-out; width: 100%; }
@@ -133,6 +127,17 @@ nav { position: fixed; top: 0; left: 0; right: 0; height: 64px; background: rgba
 .ponto-icon { font-size: 1.6rem; line-height: 1; flex-shrink: 0; }
 .ponto-info-item strong { color: #ffffff !important; font-size: 0.95rem; display: block; margin-bottom: 4px; }
 .ponto-info-item p { color: rgba(255, 255, 255, 0.85) !important; font-size: 0.9rem; line-height: 1.5; margin: 0; }
+.ponto-apoio-action { text-align: center; margin-top: 12px; }
+.ponto-apoio-action .btn-primary { margin: 0 auto; }
+
+/* SEÇÃO DE PREÇOS COM QUEBRA VISUAL */
+.precos-bg { background: #f1f5f9; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+.precos-bg .preco-card { background: #ffffff; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08); }
+
+/* OUTRAS CIDADES DA REGIONAL NO MAPA */
+.regiao-outras-cidades { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.regiao-outras-cidades a { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 16px; padding: 5px 12px; color: #fff !important; text-decoration: none; font-size: 0.8rem; font-weight: 600; display: inline-flex; align-items: center; }
+.regiao-outras-cidades a:hover { background: #e8c430; color: #0a1628 !important; border-color: #e8c430; }
 
 .vizinhas-secao { background: #0b1329; padding: 70px 5%; }
 .vizinhas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 36px; }
@@ -159,20 +164,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="nav-logo">
     <a href="/" style="display:flex;align-items:center;text-decoration:none;">
       <img src="/images/logo-volante-express.png" alt="Volante Express"
-        style="height:44px;width:auto;display:block;mix-blend-mode:screen;filter:brightness(1.1)">
+        style="height:44px;width:auto;display:block;">
     </a>
   </div>
   <a href="https://wa.me/5531996294103?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20a%20pr%C3%B3xima%20data%20de%20atendimento%20em%20Cl%C3%A1udio" class="nav-cta" target="_blank">Consultar Próxima Data</a>
 </nav>
-
-<!-- BREADCRUMB VISÍVEL -->
-<div class="breadcrumb-bar" aria-label="Navegação estrutural">
-  <div class="section-inner">
-    <a href="/">Início</a>
-    <span class="breadcrumb-sep">&gt;</span>
-    <span class="breadcrumb-current">Revestimento de Volante em Cláudio</span>
-  </div>
-</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -424,7 +420,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- PREÇOS -->
-<section>
+<section class="precos-bg" id="precos">
   <div class="section-inner" style="text-align:center">
     <span class="section-tag">Preços e garantia em Cláudio</span>
     <h2 class="section-title">Preço justo, transparente<br>e sem surpresa</h2>
@@ -542,9 +538,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="regiao-header-l">
             <div class="regiao-dot-l" style="background:#93c5fd"></div>
             <span class="regiao-nome-l">Região: Centro-Oeste</span>
-            <span class="regiao-count-l">2x por mês em ponto credenciado</span>
+            <span class="regiao-count-l">14 cidades</span>
           </div>
-          <p style="color:rgba(255,255,255,0.75);font-size:0.82rem;line-height:1.4;">Atendemos também outras cidades vizinhas através da nossa rede itinerante de instaladores especializados.</p>
+          <p style="color:rgba(255,255,255,0.85);font-size:0.84rem;line-height:1.4;margin-bottom:10px;">
+            Outras cidades com atendimento na regional <strong>Centro-Oeste</strong>:
+          </p>
+          <div class="regiao-outras-cidades">
+            
+            <a href="/revestimento-de-volante-divinopolis" class="cidade-tag" data-cidade="Divinópolis" data-cor="#93c5fd" data-text="#0a1628" title="Ver atendimento em Divinópolis">Divinópolis</a>
+            <a href="/revestimento-de-volante-itauna" class="cidade-tag" data-cidade="Itaúna" data-cor="#93c5fd" data-text="#0a1628" title="Ver atendimento em Itaúna">Itaúna</a>
+            <a href="/revestimento-de-volante-para-de-minas" class="cidade-tag" data-cidade="Pará de Minas" data-cor="#93c5fd" data-text="#0a1628" title="Ver atendimento em Pará de Minas">Pará de Minas</a>
+            <a href="/revestimento-de-volante-nova-serrana" class="cidade-tag" data-cidade="Nova Serrana" data-cor="#93c5fd" data-text="#0a1628" title="Ver atendimento em Nova Serrana">Nova Serrana</a>
+            <a href="/revestimento-de-volante-bom-despacho" class="cidade-tag" data-cidade="Bom Despacho" data-cor="#93c5fd" data-text="#0a1628" title="Ver atendimento em Bom Despacho">Bom Despacho</a>
+            <a href="/revestimento-de-volante-formiga" class="cidade-tag" data-cidade="Formiga" data-cor="#93c5fd" data-text="#0a1628" title="Ver atendimento em Formiga">Formiga</a>
+            <a href="/revestimento-de-volante-lagoa-da-prata" class="cidade-tag" data-cidade="Lagoa da Prata" data-cor="#93c5fd" data-text="#0a1628" title="Ver atendimento em Lagoa da Prata">Lagoa da Prata</a>
+            <a href="/revestimento-de-volante-santo-antonio-do-monte" class="cidade-tag" data-cidade="Santo Antônio do Monte" data-cor="#93c5fd" data-text="#0a1628" title="Ver atendimento em Santo Antônio do Monte">Santo Antônio do Monte</a>
+            <a href="/revestimento-de-volante-pitangui" class="cidade-tag" data-cidade="Pitangui" data-cor="#93c5fd" data-text="#0a1628" title="Ver atendimento em Pitangui">Pitangui</a>
+            <a href="/revestimento-de-volante-carmo-do-cajuru" class="cidade-tag" data-cidade="Carmo do Cajuru" data-cor="#93c5fd" data-text="#0a1628" title="Ver atendimento em Carmo do Cajuru">Carmo do Cajuru</a>
+            <a href="/revestimento-de-volante-oliveira" class="cidade-tag" data-cidade="Oliveira" data-cor="#93c5fd" data-text="#0a1628" title="Ver atendimento em Oliveira">Oliveira</a>
+            <a href="/revestimento-de-volante-itapecerica" class="cidade-tag" data-cidade="Itapecerica" data-cor="#93c5fd" data-text="#0a1628" title="Ver atendimento em Itapecerica">Itapecerica</a>
+            <a href="/revestimento-de-volante-carmo-da-mata" class="cidade-tag" data-cidade="Carmo da Mata" data-cor="#93c5fd" data-text="#0a1628" title="Ver atendimento em Carmo da Mata">Carmo da Mata</a>
+          </div>
         </div>
       </div>
       <div class="mapa-sticky" id="mapa-section">
@@ -553,7 +567,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="mapa-leg-item"><div class="mapa-leg-dot" style="background:var(--accent)"></div> Grande BH</div>
           <div class="mapa-leg-item"><div class="mapa-leg-dot" style="background:var(--blue-400)"></div> Central e Vetor Norte</div>
           <div class="mapa-leg-item"><div class="mapa-leg-dot" style="background:#93c5fd"></div> Centro-Oeste</div>
-          <div class="mapa-leg-item"><div class="mapa-leg-dot" style="background:#f97316"></div> Alto Paraopeba</div>
         </div>
       </div>
     </div>
@@ -625,7 +638,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="footer-regiao-col">
           <h4>Grande Belo Horizonte</h4>
           <ul>
-            <li><a href="/revestimento-de-volante-belo-horizonte">Belo Horizonte</a></li><li><a href="/revestimento-de-volante-contagem">Contagem</a></li><li><a href="/revestimento-de-volante-nova-lima">Nova Lima</a></li><li><a href="/revestimento-de-volante-santa-luzia">Santa Luzia</a></li><li><a href="/revestimento-de-volante-betim">Betim</a></li><li><a href="/revestimento-de-volante-sabara">Sabará</a></li>
+            <li><a href="/revestimento-de-volante-belo-horizonte">Belo Horizonte</a></li><li><a href="/revestimento-de-volante-contagem">Contagem</a></li><li><a href="/revestimento-de-volante-nova-lima">Nova Lima</a></li><li><a href="/revestimento-de-volante-santa-luzia">Santa Luzia</a></li><li><a href="/revestimento-de-volante-betim">Betim</a></li><li><a href="/revestimento-de-volante-sabara">Sabará</a></li><li><a href="/revestimento-de-volante-conselheiro-lafaiete">Conselheiro Lafaiete</a></li>
           </ul>
         </div>
         <div class="footer-regiao-col">
@@ -638,12 +651,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h4>Centro-Oeste</h4>
           <ul>
             <li><a href="/revestimento-de-volante-divinopolis">Divinópolis</a></li><li><a href="/revestimento-de-volante-itauna">Itaúna</a></li><li><a href="/revestimento-de-volante-para-de-minas">Pará de Minas</a></li><li><a href="/revestimento-de-volante-nova-serrana">Nova Serrana</a></li><li><a href="/revestimento-de-volante-bom-despacho">Bom Despacho</a></li><li><a href="/revestimento-de-volante-formiga">Formiga</a></li><li><a href="/revestimento-de-volante-claudio">Cláudio</a></li><li><a href="/revestimento-de-volante-lagoa-da-prata">Lagoa da Prata</a></li><li><a href="/revestimento-de-volante-santo-antonio-do-monte">Santo Antônio do Monte</a></li><li><a href="/revestimento-de-volante-pitangui">Pitangui</a></li><li><a href="/revestimento-de-volante-carmo-do-cajuru">Carmo do Cajuru</a></li><li><a href="/revestimento-de-volante-oliveira">Oliveira</a></li><li><a href="/revestimento-de-volante-itapecerica">Itapecerica</a></li><li><a href="/revestimento-de-volante-carmo-da-mata">Carmo da Mata</a></li>
-          </ul>
-        </div>
-        <div class="footer-regiao-col">
-          <h4>Alto Paraopeba</h4>
-          <ul>
-            <li><a href="/revestimento-de-volante-conselheiro-lafaiete">Conselheiro Lafaiete</a></li>
           </ul>
         </div>
       </div>

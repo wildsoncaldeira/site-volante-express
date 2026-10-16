@@ -443,8 +443,51 @@ footer strong{color:rgba(255,255,255,0.8)}
 }
 .ponto-icon { font-size: 1.6rem; line-height: 1; flex-shrink: 0; }
 .ponto-info-item strong { color: #ffffff !important; font-size: 0.95rem; display: block; margin-bottom: 4px; }
-.ponto-info-item p { color: rgba(255,255,255,0.85) !important; font-size: 0.9rem; line-height: 1.5; margin: 0; }
-.ponto-apoio-action { text-align: left; }
+.ponto-apoio-action {
+  text-align: center;
+  margin-top: 12px;
+}
+.ponto-apoio-action .btn-primary {
+  margin: 0 auto;
+}
+
+/* SEÇÃO DE PREÇOS COM QUEBRA VISUAL */
+.precos-bg {
+  background: #f1f5f9;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+.precos-bg .preco-card {
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+}
+
+/* OUTRAS CIDADES DA REGIONAL NO MAPA */
+.regiao-outras-cidades {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.regiao-outras-cidades a {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  padding: 5px 12px;
+  color: #fff !important;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all .15s ease;
+  display: inline-flex;
+  align-items: center;
+}
+.regiao-outras-cidades a:hover {
+  background: var(--accent);
+  color: var(--blue-900) !important;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
 
 /* CIDADES PRÓXIMAS */
 .vizinhas-secao { background: #0b1329; padding: 70px 5%; }

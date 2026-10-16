@@ -140,11 +140,11 @@ renderGaleria();
     {n:'Oliveira',              r:'Centro-Oeste',c:'#93c5fd',rb:'#eff6ff',rt:'#1e40af',la:-20.6964,lo:-44.8269},
     {n:'Itapecerica',           r:'Centro-Oeste',c:'#93c5fd',rb:'#eff6ff',rt:'#1e40af',la:-20.4731,lo:-45.1256},
     {n:'Carmo da Mata',         r:'Centro-Oeste',c:'#93c5fd',rb:'#eff6ff',rt:'#1e40af',la:-20.5564,lo:-44.8711},
-    {n:'Conselheiro Lafaiete',  r:'Alto Paraopeba',c:'#f97316',rb:'#fff7ed',rt:'#c2410c',la:-20.6606,lo:-43.7853}
+    {n:'Conselheiro Lafaiete',  r:'Grande BH',   c:'#e8c430',rb:'#fef9c3',rt:'#713f12',la:-20.6606,lo:-43.7853}
   ];
 
   function mkI(cor,sz,hl){
-    var sh=hl?'0 0 0 4px '+cor+'55,0 3px 14px rgba(0,0,0,0.35)':'0 2px 8px rgba(0,0,0,0.25)';
+    var sh=hl?'0 0 0 5px #e8c430, 0 4px 18px rgba(0,0,0,0.45)':'0 2px 8px rgba(0,0,0,0.25)';
     return L.divIcon({className:'',html:'<div style="width:'+sz+'px;height:'+sz+'px;border-radius:50%;background:'+cor+';border:2.5px solid rgba(255,255,255,0.95);box-shadow:'+sh+';transition:all .2s"></div>',iconSize:[sz,sz],iconAnchor:[sz/2,sz/2],popupAnchor:[0,-(sz/2+10)]});
   }
 
@@ -170,12 +170,12 @@ renderGaleria();
       M[c.n]={marker:mk,cor:c.c};
     });
 
-    // Auto-foco caso a página declare a cidade atual
+    // Auto-foco caso a página declare a cidade atual (zoom 9 = 1 nível in do zoom 8 padrão)
     if (window.__CURRENT_CITY__ && M[window.__CURRENT_CITY__]) {
       var cur = M[window.__CURRENT_CITY__];
-      cur.marker.setIcon(mkI(cur.cor, SH, true));
+      cur.marker.setIcon(mkI(cur.cor, 24, true));
       cur.marker.setZIndexOffset(1000);
-      map.setView(cur.marker.getLatLng(), 11);
+      map.setView(cur.marker.getLatLng(), 9);
       setTimeout(function(){ cur.marker.openPopup(); }, 350);
     }
 
