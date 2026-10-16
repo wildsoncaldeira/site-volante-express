@@ -33,11 +33,31 @@ export default {
       }
     }
 
+    // Legacy redirect for /divinopolis
+    if (url.pathname === "/divinopolis" || url.pathname === "/divinopolis/") {
+      return Response.redirect(new URL("/revestimento-de-volante-divinopolis", request.url), 301);
+    }
+
     // Trust Anchor Pages Negotiation (/about, /contact, /privacy)
     const trustPages = ["/about", "/contact", "/privacy"];
     if (trustPages.includes(url.pathname)) {
       if (wantsMarkdown) {
         const mdUrl = new URL(`${url.pathname}.md`, request.url);
+        const mdRes = await fetch(mdUrl);
+        if (mdRes.ok) {
+          const headers = new Headers(mdRes.headers);
+          headers.set("Content-Type", "text/markdown; charset=utf-8");
+          headers.set("Vary", "Accept");
+          return new Response(mdRes.body, { status: 200, headers });
+        }
+      }
+    }
+
+    // City Pages Negotiation (/revestimento-de-volante-*)
+    if (url.pathname.startsWith("/revestimento-de-volante-")) {
+      const cleanSlug = url.pathname.replace(/^\/revestimento-de-volante-/, "").replace(/\.(html|md)$/, "");
+      if (wantsMarkdown) {
+        const mdUrl = new URL(`/revestimento-de-volante-${cleanSlug}.md`, request.url);
         const mdRes = await fetch(mdUrl);
         if (mdRes.ok) {
           const headers = new Headers(mdRes.headers);
