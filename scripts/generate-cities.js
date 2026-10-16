@@ -675,7 +675,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
-<script src="/js/main.js?v=2.0"></script>
+<script src="/js/main.js?v=2.1"></script>
 <script>
 window.addEventListener('load', function(){
   setTimeout(function(){
