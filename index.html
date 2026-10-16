@@ -103,7 +103,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@0,700;0,800;1,800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="/css/style.css?v=3.0">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -161,11 +163,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- INIMIGOS -->
 <section class="inimigos-bg">
-  <div class="section-inner">
+  <div class="section-inner" style="text-align:center">
     <span class="section-tag">Por que as alternativas não funcionam</span>
     <h2 class="section-title" style="color:#fff">Por que a maioria das soluções<br>do mercado não resolve o seu problema</h2>
-    <p class="section-sub">Antes de escolher, entenda o que cada alternativa realmente custa.</p>
-    <div class="inimigos-grid">
+    <p class="section-sub" style="margin:0 auto 36px">Antes de escolher, entenda o que cada alternativa realmente custa.</p>
+    <div class="inimigos-grid" style="text-align:left">
       <div class="inimigo-card">
         <div class="inimigo-badge badge-tempo">Inimigo do seu tempo</div>
         <div class="inimigo-icon">🕐</div>
@@ -253,10 +255,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- COMO FUNCIONA -->
 <section class="como-bg">
-  <div class="section-inner">
+  <div class="section-inner" style="text-align:center">
     <span class="section-tag">Como funciona</span>
     <h2 class="section-title" style="color:#fff">Três passos. Sem fila,<br>sem surpresa, sem burocracia.</h2>
-    <div class="passos">
+    <p class="section-sub" style="margin:0 auto 40px;color:rgba(255,255,255,0.8)">Simples, rápido e no mesmo dia. Do agendamento até a entrega das chaves.</p>
+    <div class="passos" style="text-align:left">
       <div class="passo">
         <div class="passo-num">1</div>
         <div class="passo-icon-svg">
@@ -530,6 +533,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
-<script src="/js/main.js?v=2.1"></script>
+<script src="/js/main.js?v=3.0"></script>
 </body>
 </html>
